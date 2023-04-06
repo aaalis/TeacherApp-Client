@@ -3,12 +3,84 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:TeacherApp.ViewModels"
              mc:Ignorable="d"
+             Shell.PresentationMode="ModalAnimated"
              x:Class="TeacherApp.Views.LoginPage"
-             Shell.NavBarIsVisible="False">
+             BackgroundColor="{DynamicResource Background}">
+    
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel />
+    </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
+        <StackLayout VerticalOptions="Center"
+                     Margin="25">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Column="0"
+                      Grid.ColumnSpan="4"
+                      Grid.Row="0"
+                      Margin="0,0,0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Логин"
+                           Grid.Column="1"
+                           FontSize="32"
+                           TextColor="{DynamicResource FontColor}"/>
+                </Grid>
+
+
+                <Label Text="Логин"
+                   Grid.Column="0"
+                   Grid.Row="1"
+                   TextColor="{DynamicResource FontColor}"/>
+                <Label Text="Пароль"
+                   Grid.Column="0"
+                   Grid.Row="2"
+                   TextColor="{DynamicResource FontColor}"/>
+
+                <Entry BackgroundColor="{DynamicResource Background}"
+                       TextColor="{DynamicResource FontColor}"
+                       Text="{Binding Login}"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="3"
+                       Grid.Row="1"/>
+                <Entry IsPassword="True"
+                       BackgroundColor="{DynamicResource Background}"
+                       TextColor="{DynamicResource FontColor}"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="3"
+                       Grid.Row="2"
+                       Text="{Binding Password}"/>
+                <Button VerticalOptions="Center" 
+                    Text="Войти" 
+                    Command="{Binding LoginCommand}"
+                    Grid.Column="3"
+                    Grid.Row="3"/>
+                <Button VerticalOptions="Center" 
+                        Text="Зарегистрироваться"
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        Command="{Binding RegCommand}"
+                        BackgroundColor="{DynamicResource Secondary}"/>
+            </Grid>
         </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>

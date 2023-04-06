@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TeacherApp.Views.LessonPage"
+             xmlns:vm="clr-namespace:TeacherApp.ViewModels"
+             BackgroundColor="{DynamicResource Background}">
+    <ContentPage.BindingContext>
+        <vm:LessonViewModel/>
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <StackLayout>
+            <Label Text="Welcome to Xamarin.Forms!!!"
+                VerticalOptions="CenterAndExpand"
+                   TextColor="{DynamicResource FontColor}"
+                HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

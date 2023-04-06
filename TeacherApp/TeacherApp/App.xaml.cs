@@ -1,5 +1,4 @@
 ﻿using System;
-using TeacherApp.Services;
 using TeacherApp.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,12 +12,12 @@ namespace TeacherApp
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }
 
-        protected override void OnStart()
+        protected override async void OnStart()
         {
+            await Shell.Current.GoToAsync(nameof(LoginPage));
         }
 
         protected override void OnSleep()
