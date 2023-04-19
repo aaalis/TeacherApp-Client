@@ -29,21 +29,32 @@
                     </Grid>
                 </StackLayout>
 
-                <Grid Grid.Row="1">
+                <Grid Grid.Row="1"
+                      Margin="15">
                     <StackLayout Orientation="Vertical">
-                        <Entry BackgroundColor="{DynamicResource Background}"
-                           TextColor="{DynamicResource FontColor}"
-                           Text="{Binding Login}"/>
-                        <Entry IsPassword="True"
-                           BackgroundColor="{DynamicResource Background}"
-                           TextColor="{DynamicResource FontColor}"
-                           Text="{Binding Password}"/>
+                        <StackLayout>
+                            <Label Text="Логин"
+                                   FontSize="12"
+                                   Margin="5,0,0,0"/>
+                            <Entry BackgroundColor="{DynamicResource Background}"
+                                   TextColor="{DynamicResource FontColor}"
+                                   Text="{Binding Login}"/>
+                        </StackLayout>
+                        <StackLayout >
+                            <Label Text="Пароль"
+                                   FontSize="12"
+                                   Margin="5,0,0,0"/>
+                            <Entry IsPassword="True"
+                                   BackgroundColor="{DynamicResource Background}"
+                                   TextColor="{DynamicResource FontColor}"
+                                   Text="{Binding Password}"/>
+                        </StackLayout>
                     </StackLayout>
                 </Grid>
                 <StackLayout Grid.Row="2">
                     <Button VerticalOptions="Center" 
                             Text="Войти"
-                            Margin="70,20,70,20"
+                            Margin="70,0,70,0"
                             Command="{Binding LoginCommand}"/>
                 </StackLayout>
             </Grid>

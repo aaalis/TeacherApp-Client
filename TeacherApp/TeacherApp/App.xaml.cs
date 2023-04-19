@@ -14,6 +14,8 @@ namespace TeacherApp
         {
             InitializeComponent();
 
+            App.Current.UserAppTheme = OSAppTheme.Light;
+
             MainPage = new AppShell();
         }
 

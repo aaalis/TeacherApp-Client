@@ -99,11 +99,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="bgu_logo.png" />
-    <Content Include="lesson_logo.png" />
+    <AndroidResource Include="Resources\drawable\lesson_logo.png" />
     <AndroidResource Include="Resources\drawable\bgu_logo_short.png" />
     <AndroidResource Include="Resources\mipmap-hdpi\bgu_logo_short.png" />
-    <Content Include="timetable_logo.png" />
+    <AndroidResource Include="Resources\drawable\bgu_logo.png" />
+    <AndroidResource Include="Resources\drawable\timetable_logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
