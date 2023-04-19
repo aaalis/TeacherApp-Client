@@ -20,9 +20,9 @@
                 <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
                 <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
                 <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Primary}" />
-                <Setter Property="Shell.TabBarForegroundColor" Value="{DynamicResource FontColor}"/>
+                <Setter Property="Shell.TabBarForegroundColor" Value="{DynamicResource FontColorWhite}"/>
                 <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
-                <Setter Property="Shell.TabBarTitleColor" Value="{DynamicResource FontColor}"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="{DynamicResource FontColorWhite}"/>
             </Style>
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
             <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
@@ -34,9 +34,14 @@
         <ShellContent Title="Browse" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:ItemsPage}" />
     </TabBar>-->
     <TabBar>
-        <ShellContent Title="Занятие"
-                      Route="LessonPage"
+        <ShellContent Route="LessonPage"
+                      Icon="lesson_logo.png"
+                      Title="Занятие"
                       ContentTemplate="{DataTemplate local:LessonPage}"/>
+        <ShellContent Route="TimetablePage"
+                      Title="Расписание"
+                      Icon="timetable_logo.png"
+                      ContentTemplate="{DataTemplate local:TimetablePage}"/>
     </TabBar>
 
 

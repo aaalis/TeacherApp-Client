@@ -12,14 +12,20 @@
             <Color x:Key="Secondary">#868D8D</Color>
             <Color x:Key="Background">#E5E5E5</Color>
             <Color x:Key="FontColor">Black</Color>
+            <Color x:Key="FontColorWhite">#E5E5E5</Color>
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="{StaticResource FontColor}"></Setter>
+                <Setter Property="FontFamily" Value="RobotoSlab"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Padding" Value="10"/>
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
                         <VisualStateGroup x:Name="CommonStates">
                             <VisualState x:Name="Normal">
                                 <VisualState.Setters>
                                     <Setter Property="BackgroundColor" Value="{StaticResource ButtonColor}" />
+                                    <Setter Property="TextColor" Value="{StaticResource FontColorWhite}"/>
                                 </VisualState.Setters>
                             </VisualState>
                             <VisualState x:Name="Disabled">
@@ -31,6 +37,14 @@
                     </VisualStateGroupList>
                 </Setter>
             </Style>
-        </ResourceDictionary>        
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="RobotoSlab"/>
+                <Setter Property="FontSize" Value="18"/>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="FontFamily" Value="RobotoSlab"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

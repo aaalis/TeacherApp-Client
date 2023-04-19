@@ -1,9 +1,35 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <PackageIcon></PackageIcon>
+    <Product>BGU</Product>
+    <ApplicationIcon>bgu_logo_short.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Fonts\RobotoSlab-Light.ttf" />
+    <None Remove="Resources\RobotoSlab-Black.ttf" />
+    <None Remove="Resources\RobotoSlab-Bold.ttf" />
+    <None Remove="Resources\RobotoSlab-ExtraBold.ttf" />
+    <None Remove="Resources\RobotoSlab-ExtraLight.ttf" />
+    <None Remove="Resources\RobotoSlab-Light.ttf" />
+    <None Remove="Resources\RobotoSlab-Medium.ttf" />
+    <None Remove="Resources\RobotoSlab-Regular.ttf" />
+    <None Remove="Resources\RobotoSlab-SemiBold.ttf" />
+    <None Remove="Resources\RobotoSlab-Thin.ttf" />
+    <None Remove="Resources\RobotoSlab-VariableFont_wght.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="bgu_logo_short.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Fonts\RobotoSlab-Light.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\RobotoSlab-VariableFont_wght.ttf" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />  
@@ -16,14 +42,40 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="..\TeacherApp.Android\Resources\drawable\bgu_logo_short.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Views\LessonPage.xaml.cs">
       <DependentUpon>LessonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\TimetablePage.xaml.cs">
+      <DependentUpon>TimetablePage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Views\GradesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\LessonPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\StudentsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\TimetablePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="bgu_logo_short.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 </Project>
