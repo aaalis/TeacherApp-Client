@@ -25,12 +25,12 @@
                 <StackLayout Grid.Row="0">
                     <Grid>
                         <Image Source="bgu_logo.png"
-                               Margin="75"/>
+                               Margin="20"/>
                     </Grid>
                 </StackLayout>
 
                 <Grid Grid.Row="1"
-                      Margin="15">
+                      Margin="15,70,15,15">
                     <StackLayout Orientation="Vertical">
                         <StackLayout>
                             <Label Text="Логин"

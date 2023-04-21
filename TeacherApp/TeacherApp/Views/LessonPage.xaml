@@ -13,6 +13,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
         <Grid>
@@ -25,7 +26,8 @@
                            Margin="5,0,0,0"/>
                     <Entry BackgroundColor="{DynamicResource Background}"
                            TextColor="{DynamicResource FontColor}"
-                           IsReadOnly="True"/>
+                           IsReadOnly="True"
+                           Text="{Binding LessonDiscripline}"/>
                 </StackLayout>
                 <StackLayout>
                     <Label Text="Группа"
@@ -34,7 +36,8 @@
                            Margin="5,0,0,0"/>
                     <Entry BackgroundColor="{DynamicResource Background}"
                            TextColor="{DynamicResource FontColor}"
-                           IsReadOnly="True"/>
+                           IsReadOnly="True"
+                           Text="{Binding LessonGroupName}"/>
                 </StackLayout>
                 <StackLayout>
                     <Label Text="Дата/Время"
@@ -43,7 +46,8 @@
                            Margin="5,0,0,0"/>
                     <Entry BackgroundColor="{DynamicResource Background}"
                            TextColor="{DynamicResource FontColor}"
-                           IsReadOnly="True"/>
+                           IsReadOnly="True"
+                           Text="{Binding LessonDatetime}"/>
                 </StackLayout>
             </StackLayout>
         </Grid>
@@ -56,14 +60,49 @@
         <Grid Grid.Row="2" 
               BackgroundColor="Black">
             <Grid BackgroundColor="{StaticResource BackgroundListView}" 
-                  Margin="0,1,0,0">
+                  Margin="0,1,0,1">
                 <Grid>
                     <StackLayout>
                         <ListView BackgroundColor="{StaticResource Background}"
-                              Margin="30,0,30,0"/>
+                                  Margin="30,0,30,0"
+                                  ItemsSource="{Binding LessonStudents}"
+                                  HorizontalScrollBarVisibility="Never">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid Padding="1"
+                                              BackgroundColor="Black">
+                                            <Grid BackgroundColor="{StaticResource Background}"
+                                                  Padding="10">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Label Text="{Binding Name}"
+                                                       Grid.Column="0"
+                                                       TextColor="{StaticResource FontColor}"
+                                                       HorizontalOptions="Start"
+                                                       VerticalOptions="Center"/>
+
+                                                <StackLayout Grid.Column="1">
+                                                    <Image Source="tick.png"
+                                                               WidthRequest="25"/>
+                                                </StackLayout>
+                                            </Grid>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </StackLayout>
                 </Grid>
             </Grid>
         </Grid>
+
+        <StackLayout Grid.Row="3"
+                     Padding="125,10,125,10">
+            <Button Text="Оценки"/>
+        </StackLayout>
     </Grid>
 </ContentPage>
