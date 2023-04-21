@@ -35,6 +35,7 @@
                         <StackLayout>
                             <Label Text="Логин"
                                    FontSize="12"
+                                   TextColor="{StaticResource FontColor}"
                                    Margin="5,0,0,0"/>
                             <Entry BackgroundColor="{DynamicResource Background}"
                                    TextColor="{DynamicResource FontColor}"
@@ -43,6 +44,7 @@
                         <StackLayout >
                             <Label Text="Пароль"
                                    FontSize="12"
+                                   TextColor="{StaticResource FontColor}"
                                    Margin="5,0,0,0"/>
                             <Entry IsPassword="True"
                                    BackgroundColor="{DynamicResource Background}"

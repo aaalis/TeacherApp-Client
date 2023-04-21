@@ -9,11 +9,61 @@
     </ContentPage.BindingContext>
 
     <Grid>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!!!"
-                VerticalOptions="CenterAndExpand"
-                   TextColor="{DynamicResource FontColor}"
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <StackLayout Orientation="Vertical"
+                         Margin="15">
+                <StackLayout>
+                    <Label Text="Предмет"
+                           FontSize="12"
+                           TextColor="{StaticResource FontColor}"
+                           Margin="5,0,0,0"/>
+                    <Entry BackgroundColor="{DynamicResource Background}"
+                           TextColor="{DynamicResource FontColor}"
+                           IsReadOnly="True"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Группа"
+                           FontSize="12"
+                           TextColor="{StaticResource FontColor}"
+                           Margin="5,0,0,0"/>
+                    <Entry BackgroundColor="{DynamicResource Background}"
+                           TextColor="{DynamicResource FontColor}"
+                           IsReadOnly="True"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Дата/Время"
+                           FontSize="12"
+                           TextColor="{StaticResource FontColor}"
+                           Margin="5,0,0,0"/>
+                    <Entry BackgroundColor="{DynamicResource Background}"
+                           TextColor="{DynamicResource FontColor}"
+                           IsReadOnly="True"/>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+
+        <Label Text="Посещения"
+               Grid.Row="1"
+               TextColor="{StaticResource FontColor}"
+               Margin="5,0,0,0"/>
+
+        <Grid Grid.Row="2" 
+              BackgroundColor="Black">
+            <Grid BackgroundColor="{StaticResource BackgroundListView}" 
+                  Margin="0,1,0,0">
+                <Grid>
+                    <StackLayout>
+                        <ListView BackgroundColor="{StaticResource Background}"
+                              Margin="30,0,30,0"/>
+                    </StackLayout>
+                </Grid>
+            </Grid>
+        </Grid>
     </Grid>
 </ContentPage>
