@@ -16,9 +16,14 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <Grid>
+        <Grid Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
             <StackLayout Orientation="Vertical"
-                         Margin="15">
+                         Grid.Column="0">
                 <StackLayout>
                     <Label Text="Предмет"
                            FontSize="12"
@@ -29,16 +34,7 @@
                            IsReadOnly="True"
                            Text="{Binding LessonDiscripline}"/>
                 </StackLayout>
-                <StackLayout>
-                    <Label Text="Группа"
-                           FontSize="12"
-                           TextColor="{StaticResource FontColor}"
-                           Margin="5,0,0,0"/>
-                    <Entry BackgroundColor="{DynamicResource Background}"
-                           TextColor="{DynamicResource FontColor}"
-                           IsReadOnly="True"
-                           Text="{Binding LessonGroupName}"/>
-                </StackLayout>
+                
                 <StackLayout>
                     <Label Text="Дата/Время"
                            FontSize="12"
@@ -50,6 +46,30 @@
                            Text="{Binding LessonDatetime}"/>
                 </StackLayout>
             </StackLayout>
+
+            <StackLayout Grid.Column="1"
+                         Orientation="Vertical">
+                <StackLayout>
+                    <Label Text="Группа"
+                           FontSize="12"
+                           TextColor="{StaticResource FontColor}"
+                           Margin="5,0,0,0"/>
+                    <Entry BackgroundColor="{DynamicResource Background}"
+                           TextColor="{DynamicResource FontColor}"
+                           IsReadOnly="True"
+                           Text="{Binding LessonGroupName}"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Аудитория"
+                           FontSize="12"
+                           TextColor="{StaticResource FontColor}"
+                           Margin="5,0,0,0"/>
+                    <Entry BackgroundColor="{DynamicResource Background}"
+                           TextColor="{DynamicResource FontColor}"
+                           IsReadOnly="True"
+                           Text="{Binding LessonClassroom}"/>
+                </StackLayout>
+            </StackLayout>
         </Grid>
 
         <Label Text="Посещения"
@@ -58,7 +78,7 @@
                Margin="5,0,0,0"/>
 
         <Grid Grid.Row="2" 
-              BackgroundColor="Black">
+              BackgroundColor="Gray">
             <Grid BackgroundColor="{StaticResource BackgroundListView}" 
                   Margin="0,1,0,1">
                 <Grid>

@@ -34,18 +34,25 @@ namespace TeacherApp.Models
 			set { group = value; }
 		}
 
+		private string classroom;
+		public string Classroom
+		{
+			get { return classroom; }
+			set { classroom = value; }
+		}
 
 		public Lesson()
 		{
 
 		}
 
-		public Lesson(int Id, DateTime Datetime, string Discipline, Group Group)
+		public Lesson(int Id, DateTime Datetime, string Discipline, Group Group, string Classroom)
 		{
 			this.Id = Id;
 			this.Datetime = Datetime;
 			this.Discipline = Discipline;
 			this.Group = Group;
+			this.Classroom = Classroom;
 		}
 	}
 }

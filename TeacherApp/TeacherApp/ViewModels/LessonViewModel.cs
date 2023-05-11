@@ -9,9 +9,9 @@ namespace TeacherApp.ViewModels
 {
     public class LessonViewModel : BaseViewModel
     {
-        public Lesson LocalLesson { get; set; }
+		public Lesson LocalLesson { get; set; }
 
-        private string lessonDiscripline;
+		private string lessonDiscripline;
 		public string LessonDiscripline
         {
 			get { return lessonDiscripline; }
@@ -55,6 +55,18 @@ namespace TeacherApp.ViewModels
 			}
 		}
 
+		private string lessonClassroom;
+		public string LessonClassroom
+		{
+			get { return lessonClassroom; }
+			set 
+			{
+                lessonClassroom = value;
+				SetProperty(ref lessonClassroom, value);
+			}
+		}
+
+
 
 		public LessonViewModel()
 		{
@@ -63,6 +75,7 @@ namespace TeacherApp.ViewModels
 			LessonGroupName = LocalLesson.Group.Name;
 			LessonDatetime = LocalLesson.Datetime.ToString();
 			LessonStudents = LocalLesson.Group.Students.ToList();
+			LessonClassroom = LocalLesson.Classroom;
 		}
 	}
 }

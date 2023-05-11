@@ -57,9 +57,9 @@ namespace TeacherApp.Services
             {
                 return new List<Lesson>()
                 {
-                     new Lesson{ Id = 1, Datetime = DateTime.Now.AddDays(-10.0), Discipline = "Базы данных", Group = Groups[0]},
-                     new Lesson{ Id = 2, Datetime = DateTime.Now.AddDays(-8.0), Discipline = "Анализ больших данных", Group = Groups[1]},
-                     new Lesson{ Id = 3, Datetime = DateTime.Now.AddDays(-6.0), Discipline = "Проектирование ИС", Group = Groups[2]},
+                     new Lesson{ Id = 1, Datetime = DateTime.Now.AddDays(-10.0), Discipline = "Базы данных", Group = Groups[0], Classroom = "3-404"},
+                     new Lesson{ Id = 2, Datetime = DateTime.Now.AddDays(-8.0), Discipline = "Анализ больших данных", Group = Groups[1], Classroom = "3-405"},
+                     new Lesson{ Id = 3, Datetime = DateTime.Now.AddDays(-6.0), Discipline = "Проектирование ИС", Group = Groups[2], Classroom = "3-406"},
                 };
             }
         }
