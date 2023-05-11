@@ -14,6 +14,7 @@
             <Color x:Key="BackgroundListView">#fff</Color>
             <Color x:Key="FontColor">Black</Color>
             <Color x:Key="FontColorWhite">#f0f0f0</Color>
+            <Color x:Key="SelectedItem">LightGreen</Color>
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="{StaticResource FontColor}"></Setter>
                 <Setter Property="FontFamily" Value="RobotoSlab"/>
@@ -50,6 +51,11 @@
                 <Setter Property="FontFamily" Value="RobotoSlab"/>
                 <Setter Property="FontSize" Value="18"/>
             </Style>
+            <LinearGradientBrush x:Key="Item"
+                                 EndPoint="1,0">
+                <GradientStop Color="{StaticResource SelectedItem}" Offset="0.1"/>
+                <GradientStop Color="{StaticResource Background}" Offset="1.0"/>
+            </LinearGradientBrush>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

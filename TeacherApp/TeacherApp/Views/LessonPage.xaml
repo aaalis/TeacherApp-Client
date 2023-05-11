@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TeacherApp.Views.LessonPage"
              xmlns:vm="clr-namespace:TeacherApp.ViewModels"
+             xmlns:custom="clr-namespace:TeacherApp.Views.CustomElements"
+
              BackgroundColor="{DynamicResource Background}">
     <ContentPage.BindingContext>
         <vm:LessonViewModel/>
@@ -83,38 +85,68 @@
                   Margin="0,1,0,1">
                 <Grid>
                     <StackLayout>
-                        <ListView BackgroundColor="{StaticResource Background}"
-                                  Margin="30,0,30,0"
-                                  ItemsSource="{Binding LessonStudents}"
-                                  HorizontalScrollBarVisibility="Never">
-                            <ListView.ItemTemplate>
+                        <CollectionView BackgroundColor="{StaticResource Background}"
+                                        Margin="30,0,30,0"
+                                        SelectionMode="Multiple"
+                                        ItemsSource="{Binding LessonStudents}"
+                                        HorizontalScrollBarVisibility="Never">
+                            <CollectionView.ItemTemplate>
                                 <DataTemplate>
-                                    <ViewCell>
-                                        <Grid Padding="1"
-                                              BackgroundColor="Black">
-                                            <Grid BackgroundColor="{StaticResource Background}"
-                                                  Padding="10">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition/>
-                                                    <ColumnDefinition/>
-                                                </Grid.ColumnDefinitions>
+                                    <!--<custom:CustomViewCell SelectedItemBackgroundColor="LightGreen">
+                                        <ViewCell.View>
+                                            <Grid Padding="1">
+                                                <Grid Padding="10">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition/>
+                                                        <ColumnDefinition/>
+                                                    </Grid.ColumnDefinitions>
 
-                                                <Label Text="{Binding Name}"
+                                                    <Label Text="{Binding Name}"
+                                                           Grid.Column="0"
+                                                           TextColor="{StaticResource FontColor}"
+                                                           HorizontalOptions="Start"
+                                                           VerticalOptions="Center"/>
+                                                    
+                                                    <StackLayout Grid.Column="1">
+                                                        <Image Source="tick.png"
+                                                               WidthRequest="25"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </Grid>
+                                        </ViewCell.View>
+                                    </custom:CustomViewCell>-->
+                                    <Grid Padding="10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Text="{Binding Name}"
                                                        Grid.Column="0"
                                                        TextColor="{StaticResource FontColor}"
                                                        HorizontalOptions="Start"
                                                        VerticalOptions="Center"/>
 
-                                                <StackLayout Grid.Column="1">
-                                                    <Image Source="tick.png"
-                                                               WidthRequest="25"/>
-                                                </StackLayout>
-                                            </Grid>
-                                        </Grid>
-                                    </ViewCell>
+                                        <StackLayout Grid.Column="1"
+                                                     Margin="0,0,10,0">
+                                            <Image Source="tick.png"
+                                                   WidthRequest="25"/>
+                                        </StackLayout>
+
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup Name="CommonStates">
+                                                <VisualState Name="Normal" />
+                                                <VisualState Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="Background" Value="{StaticResource Item}"/>
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                    </Grid>
                                 </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
                     </StackLayout>
                 </Grid>
             </Grid>
