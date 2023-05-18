@@ -63,6 +63,9 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.3</Version>
     </PackageReference>
+    <PackageReference Include="PCLAppConfig">
+      <Version>1.0.1</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
   </ItemGroup>
@@ -73,6 +76,10 @@
     <Compile Include="Views\CustomElements\CustomViewCellRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="..\TeacherApp\App.config">
+      <Link>Assets\App.config</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidAsset>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />

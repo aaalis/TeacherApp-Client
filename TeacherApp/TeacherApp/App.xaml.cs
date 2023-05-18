@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PCLAppConfig;
+using System;
+using TeacherApp.Models.Intefaces;
 using TeacherApp.Services;
 using TeacherApp.Views;
 using Xamarin.Forms;

@@ -5,6 +5,7 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using AndroidX.AppCompat.App;
+using PCLAppConfig;
 
 namespace TeacherApp.Droid
 {
@@ -19,6 +20,8 @@ namespace TeacherApp.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+
+            ConfigurationManager.Initialise(PCLAppConfig.FileSystemStream.PortableStream.Current);
 
             LoadApplication(new App());
         }

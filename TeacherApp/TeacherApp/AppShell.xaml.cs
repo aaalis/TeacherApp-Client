@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using TeacherApp.ViewModels;
+﻿using PCLAppConfig;
 using TeacherApp.Views;
 using Xamarin.Forms;
 
@@ -11,6 +9,8 @@ namespace TeacherApp
         public AppShell()
         {
             InitializeComponent();
+
+            //ConfigurationManager.Initialise(PCLAppConfig.FileSystemStream.PortableStream.Current);
 
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute(nameof(LessonPage), typeof(LessonPage));

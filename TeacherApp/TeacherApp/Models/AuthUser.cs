@@ -4,23 +4,8 @@ using System.Text;
 
 namespace TeacherApp.Models
 {
-    public class AuthUser
+    public class AuthUser : User
     {
-		private string login;
-		public string Login
-		{
-			get { return login; }
-			set { login = value; }
-		}
-
-		private string password;
-
-		public string Password
-		{
-			get { return password; }
-			set { password = value; }
-		}
-
 		private static AuthUser instance;
 
 		private AuthUser()
