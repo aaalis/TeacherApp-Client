@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using TeacherApp.Models;
@@ -68,6 +69,19 @@ namespace TeacherApp.ViewModels
 			}
 		}
 
+		private ObservableCollection<object> selectedStudents;
+		public ObservableCollection<object> SelectedStudents
+		{
+			get { return selectedStudents; }
+			set 
+			{ 
+				selectedStudents = value;
+				SetProperty(ref selectedStudents, value);
+			}
+		}
+
+		public Command ItemSelectCommand { get; }
+
 		public Command GradesCommand { get; }
 
 		public LessonViewModel()
@@ -87,13 +101,20 @@ namespace TeacherApp.ViewModels
 			LessonDatetime = LocalLesson.Datetime.ToString();
 			LessonStudents = LocalLesson.Group.Students.ToList();
 			LessonClassroom = LocalLesson.Classroom;
+			SelectedStudents = new ObservableCollection<object>();
 
             GradesCommand = new Command(OnGradesClick);
+			ItemSelectCommand = new Command(OnItemSelect);
 		}
 
 		private async void OnGradesClick(object obj)
 		{
 			await Shell.Current.GoToAsync(nameof(StudentsPage));
+		}
+
+		private void OnItemSelect(object obj)
+		{
+			var test2 = obj;
 		}
 	}
 }

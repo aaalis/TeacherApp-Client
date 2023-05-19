@@ -1,12 +1,111 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TeacherApp.Views.GradesPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             xmlns:vm="clr-namespace:TeacherApp.ViewModels"
+             x:Class="TeacherApp.Views.GradesPage"
+             BackgroundColor="{StaticResource Background}"
+             Title="Успеваемость">
+    <ContentPage.BindingContext>
+        <vm:GradesViewModel/>
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Margin="15"
+              Grid.Column="0">
+            <StackLayout Orientation="Vertical">
+                <StackLayout>
+                    <Label Text="Студент"
+                           TextColor="{StaticResource FontColor}"
+                           Margin="5,0,0,0"/>
+                    <Entry BackgroundColor="{DynamicResource Background}"
+                           TextColor="{DynamicResource FontColor}"
+                           IsReadOnly="True"
+                           Text="{Binding }"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Предмет"
+                           TextColor="{StaticResource FontColor}"
+                           Margin="5,0,0,0"/>
+                    <Entry BackgroundColor="{DynamicResource Background}"
+                           TextColor="{DynamicResource FontColor}"
+                           IsReadOnly="True"
+                           Text="{Binding }"/>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <Label Text="Задание"
+               Grid.Column="0"
+               TextColor="{StaticResource FontColor}"
+               Margin="5,0,0,0"/>
+            <Label Text="Балл/Макс.балл"
+               Grid.Column="1"
+               TextColor="{StaticResource FontColor}"
+               Margin="5,0,0,0"/>
+        </Grid>
+
+        <Grid Grid.Row="2" 
+              BackgroundColor="Gray">
+            <Grid BackgroundColor="{StaticResource BackgroundListView}" 
+                  Margin="0,1,0,1">
+                <Grid>
+                    <StackLayout>
+                        <CollectionView BackgroundColor="{StaticResource Background}"
+                                        Margin="0,0,0,0"
+                                        SelectionMode="Multiple"
+                                        ItemsSource="{Binding }"
+                                        HorizontalScrollBarVisibility="Never"
+                                        >
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Padding="10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Text="{Binding }"
+                                               Grid.Column="0"
+                                               TextColor="{StaticResource FontColor}"
+                                               HorizontalOptions="Start"
+                                               VerticalOptions="Center"
+                                               FontSize="18"/>
+
+                                        <StackLayout Grid.Column="1"
+                                                     Margin="0,0,10,0">
+                                            <Image Source="tick.png"
+                                                   WidthRequest="25"/>
+                                        </StackLayout>
+
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup Name="CommonStates">
+                                                <VisualState Name="Normal" />
+                                                <VisualState Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="Background" Value="{StaticResource Item}"/>
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
 </ContentPage>

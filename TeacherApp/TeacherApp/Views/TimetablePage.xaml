@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TeacherApp.Views.TimetablePage"
              xmlns:vm="clr-namespace:TeacherApp.ViewModels"
-             BackgroundColor="{StaticResource Background}">
+             BackgroundColor="{StaticResource Background}"
+             Title="Расписание">
     <ContentPage.BindingContext>
         <vm:TimetableViewModel/>
     </ContentPage.BindingContext>
