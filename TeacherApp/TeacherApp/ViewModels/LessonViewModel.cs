@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using TeacherApp.Models;
 using TeacherApp.Services;
+using TeacherApp.Views;
+using Xamarin.Forms;
 
 namespace TeacherApp.ViewModels
 {
@@ -66,16 +68,32 @@ namespace TeacherApp.ViewModels
 			}
 		}
 
-
+		public Command GradesCommand { get; }
 
 		public LessonViewModel()
 		{
-			LocalLesson = MockDataStore.Lessons[0];
+            LocalLesson = MockDataStore.Lessons[0];
+
+            //temp
+            var currentLesson = CurrentLesson.Instance();
+			currentLesson.Group = LocalLesson.Group;
+			currentLesson.Discipline = LocalLesson.Discipline;
+			currentLesson.Datetime = LocalLesson.Datetime;
+			currentLesson.Classroom = LocalLesson.Classroom;
+			currentLesson.Id = LocalLesson.Id;
+
 			LessonDiscripline = LocalLesson.Discipline;
 			LessonGroupName = LocalLesson.Group.Name;
 			LessonDatetime = LocalLesson.Datetime.ToString();
 			LessonStudents = LocalLesson.Group.Students.ToList();
 			LessonClassroom = LocalLesson.Classroom;
+
+            GradesCommand = new Command(OnGradesClick);
+		}
+
+		private async void OnGradesClick(object obj)
+		{
+			await Shell.Current.GoToAsync(nameof(StudentsPage));
 		}
 	}
 }

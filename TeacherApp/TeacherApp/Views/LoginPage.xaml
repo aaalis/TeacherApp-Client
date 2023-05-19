@@ -34,22 +34,22 @@
                     <StackLayout Orientation="Vertical">
                         <StackLayout>
                             <Label Text="Логин"
-                                   FontSize="12"
                                    TextColor="{StaticResource FontColor}"
                                    Margin="5,0,0,0"/>
                             <Entry BackgroundColor="{DynamicResource Background}"
                                    TextColor="{DynamicResource FontColor}"
-                                   Text="{Binding Login}"/>
+                                   Text="{Binding Login}"
+                                   FontSize="18"/>
                         </StackLayout>
                         <StackLayout >
                             <Label Text="Пароль"
-                                   FontSize="12"
                                    TextColor="{StaticResource FontColor}"
                                    Margin="5,0,0,0"/>
                             <Entry IsPassword="True"
                                    BackgroundColor="{DynamicResource Background}"
                                    TextColor="{DynamicResource FontColor}"
-                                   Text="{Binding Password}"/>
+                                   Text="{Binding Password}"
+                                   FontSize="18"/>
                         </StackLayout>
                     </StackLayout>
                 </Grid>
@@ -61,7 +61,7 @@
                     <StackLayout Margin="20,10,20,0"
                                  HorizontalOptions="Center">
                         <Label IsVisible="{Binding Warning, Mode=TwoWay}"
-                           Text="Логин и пароль не должен быть пустым"
+                           Text="Ошибка авторизации"
                            TextColor="Red"
                            FontSize="14"
                            LineBreakMode="WordWrap"/>

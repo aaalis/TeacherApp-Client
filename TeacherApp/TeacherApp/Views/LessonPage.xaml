@@ -18,7 +18,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <Grid Margin="5">
+        <Grid Margin="15">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -28,7 +28,6 @@
                          Grid.Column="0">
                 <StackLayout>
                     <Label Text="Предмет"
-                           FontSize="12"
                            TextColor="{StaticResource FontColor}"
                            Margin="5,0,0,0"/>
                     <Entry BackgroundColor="{DynamicResource Background}"
@@ -39,7 +38,6 @@
                 
                 <StackLayout>
                     <Label Text="Дата/Время"
-                           FontSize="12"
                            TextColor="{StaticResource FontColor}"
                            Margin="5,0,0,0"/>
                     <Entry BackgroundColor="{DynamicResource Background}"
@@ -53,7 +51,6 @@
                          Orientation="Vertical">
                 <StackLayout>
                     <Label Text="Группа"
-                           FontSize="12"
                            TextColor="{StaticResource FontColor}"
                            Margin="5,0,0,0"/>
                     <Entry BackgroundColor="{DynamicResource Background}"
@@ -63,7 +60,6 @@
                 </StackLayout>
                 <StackLayout>
                     <Label Text="Аудитория"
-                           FontSize="12"
                            TextColor="{StaticResource FontColor}"
                            Margin="5,0,0,0"/>
                     <Entry BackgroundColor="{DynamicResource Background}"
@@ -74,8 +70,9 @@
             </StackLayout>
         </Grid>
 
-        <Label Text="Посещения"
+        <Label Text="Посещаемость"
                Grid.Row="1"
+               FontSize="18"
                TextColor="{StaticResource FontColor}"
                Margin="5,0,0,0"/>
 
@@ -86,35 +83,12 @@
                 <Grid>
                     <StackLayout>
                         <CollectionView BackgroundColor="{StaticResource Background}"
-                                        Margin="30,0,30,0"
+                                        Margin="0,0,0,0"
                                         SelectionMode="Multiple"
                                         ItemsSource="{Binding LessonStudents}"
                                         HorizontalScrollBarVisibility="Never">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
-                                    <!--<custom:CustomViewCell SelectedItemBackgroundColor="LightGreen">
-                                        <ViewCell.View>
-                                            <Grid Padding="1">
-                                                <Grid Padding="10">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition/>
-                                                        <ColumnDefinition/>
-                                                    </Grid.ColumnDefinitions>
-
-                                                    <Label Text="{Binding Name}"
-                                                           Grid.Column="0"
-                                                           TextColor="{StaticResource FontColor}"
-                                                           HorizontalOptions="Start"
-                                                           VerticalOptions="Center"/>
-                                                    
-                                                    <StackLayout Grid.Column="1">
-                                                        <Image Source="tick.png"
-                                                               WidthRequest="25"/>
-                                                    </StackLayout>
-                                                </Grid>
-                                            </Grid>
-                                        </ViewCell.View>
-                                    </custom:CustomViewCell>-->
                                     <Grid Padding="10">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition/>
@@ -122,10 +96,11 @@
                                         </Grid.ColumnDefinitions>
 
                                         <Label Text="{Binding Name}"
-                                                       Grid.Column="0"
-                                                       TextColor="{StaticResource FontColor}"
-                                                       HorizontalOptions="Start"
-                                                       VerticalOptions="Center"/>
+                                               Grid.Column="0"
+                                               TextColor="{StaticResource FontColor}"
+                                               HorizontalOptions="Start"
+                                               VerticalOptions="Center"
+                                               FontSize="18"/>
 
                                         <StackLayout Grid.Column="1"
                                                      Margin="0,0,10,0">
@@ -154,7 +129,8 @@
 
         <StackLayout Grid.Row="3"
                      Padding="125,10,125,10">
-            <Button Text="Оценки"/>
+            <Button Text="Оценки"
+                    Command="{Binding GradesCommand}"/>
         </StackLayout>
     </Grid>
 </ContentPage>

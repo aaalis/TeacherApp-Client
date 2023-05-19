@@ -41,15 +41,15 @@
             </Style>
             <Style TargetType="Label">
                 <Setter Property="FontFamily" Value="RobotoSlab"/>
-                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="FontSize" Value="14"/>
             </Style>
             <Style TargetType="Entry">
                 <Setter Property="FontFamily" Value="RobotoSlab"/>
-                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="FontSize" Value="16"/>
             </Style>
             <Style TargetType="DatePicker">
                 <Setter Property="FontFamily" Value="RobotoSlab"/>
-                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="FontSize" Value="16"/>
             </Style>
             <LinearGradientBrush x:Key="Item"
                                  EndPoint="1,0">
