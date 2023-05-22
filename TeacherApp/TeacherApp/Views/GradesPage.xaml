@@ -26,7 +26,7 @@
                     <Entry BackgroundColor="{DynamicResource Background}"
                            TextColor="{DynamicResource FontColor}"
                            IsReadOnly="True"
-                           Text="{Binding }"/>
+                           Text="{Binding Student.Name}"/>
                 </StackLayout>
                 <StackLayout>
                     <Label Text="Предмет"
@@ -35,7 +35,7 @@
                     <Entry BackgroundColor="{DynamicResource Background}"
                            TextColor="{DynamicResource FontColor}"
                            IsReadOnly="True"
-                           Text="{Binding }"/>
+                           Text="{Binding Lesson.Discipline}"/>
                 </StackLayout>
             </StackLayout>
         </Grid>
@@ -49,11 +49,11 @@
             <Label Text="Задание"
                Grid.Column="0"
                TextColor="{StaticResource FontColor}"
-               Margin="5,0,0,0"/>
+               Margin="15,0,0,0"/>
             <Label Text="Балл/Макс.балл"
                Grid.Column="1"
                TextColor="{StaticResource FontColor}"
-               Margin="5,0,0,0"/>
+               Margin="15,0,0,0"/>
         </Grid>
 
         <Grid Grid.Row="2" 
@@ -94,7 +94,7 @@
                                                 <VisualState Name="Normal" />
                                                 <VisualState Name="Selected">
                                                     <VisualState.Setters>
-                                                        <Setter Property="Background" Value="{StaticResource Item}"/>
+                                                        <Setter Property="Background" Value="{StaticResource SelectedItemGradient}"/>
                                                     </VisualState.Setters>
                                                 </VisualState>
                                             </VisualStateGroup>

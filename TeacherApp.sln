@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeacherApp.Android", "Teach
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeacherApp.iOS", "TeacherApp\TeacherApp.iOS\TeacherApp.iOS.csproj", "{57D5D217-C4ED-411A-B844-F9048BA2F261}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeacherApp", "TeacherApp\TeacherApp\TeacherApp.csproj", "{C865A01F-D97D-438B-A3A7-D909CCC52DCB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeacherApp", "TeacherApp\TeacherApp\TeacherApp.csproj", "{C865A01F-D97D-438B-A3A7-D909CCC52DCB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

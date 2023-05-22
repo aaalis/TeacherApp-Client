@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TeacherApp.Views.LessonPage"
              xmlns:vm="clr-namespace:TeacherApp.ViewModels"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              Title="Текущее занятие"
              BackgroundColor="{DynamicResource Background}">
     <ContentPage.BindingContext>
@@ -32,7 +33,7 @@
                     <Entry BackgroundColor="{DynamicResource Background}"
                            TextColor="{DynamicResource FontColor}"
                            IsReadOnly="True"
-                           Text="{Binding LessonDiscripline}"/>
+                           Text="{Binding LocalLesson.Discipline}"/>
                 </StackLayout>
                 
                 <StackLayout>
@@ -42,7 +43,7 @@
                     <Entry BackgroundColor="{DynamicResource Background}"
                            TextColor="{DynamicResource FontColor}"
                            IsReadOnly="True"
-                           Text="{Binding LessonDatetime}"/>
+                           Text="{Binding LocalLesson.Datetime}"/>
                 </StackLayout>
             </StackLayout>
 
@@ -55,7 +56,7 @@
                     <Entry BackgroundColor="{DynamicResource Background}"
                            TextColor="{DynamicResource FontColor}"
                            IsReadOnly="True"
-                           Text="{Binding LessonGroupName}"/>
+                           Text="{Binding LocalLesson.Group.Name}"/>
                 </StackLayout>
                 <StackLayout>
                     <Label Text="Аудитория"
@@ -64,7 +65,7 @@
                     <Entry BackgroundColor="{DynamicResource Background}"
                            TextColor="{DynamicResource FontColor}"
                            IsReadOnly="True"
-                           Text="{Binding LessonClassroom}"/>
+                           Text="{Binding LocalLesson.Classroom}"/>
                 </StackLayout>
             </StackLayout>
         </Grid>
@@ -80,41 +81,43 @@
                   Margin="0,1,0,1">
                 <Grid>
                     <StackLayout>
-                        <CollectionView BackgroundColor="{StaticResource Background}"
+                        <CollectionView BackgroundColor="{StaticResource BackgroundListView}"
                                         Margin="0,0,0,0"
                                         SelectionMode="Multiple"
                                         ItemsSource="{Binding LessonStudents}"
                                         HorizontalScrollBarVisibility="Never"
                                         SelectedItems="{Binding SelectedStudents, Mode=TwoWay}"
-                                        SelectionChangedCommand="{Binding ItemSelectCommand}"
-                                        >
+                                        SelectionChangedCommand="{Binding ItemSelectCommand}">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid Padding="10">
+                                    <Grid Padding="10"
+                                          xct:TouchEffect.LongPressCommand="{Binding LongPressCommand, Source={RelativeSource AncestorType={x:Type vm:LessonViewModel}}}"
+                                          xct:TouchEffect.LongPressCommandParameter="{Binding .}">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition/>
                                             <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition />
                                         </Grid.ColumnDefinitions>
 
-                                        <Label Text="{Binding Name}"
-                                               Grid.Column="0"
-                                               TextColor="{StaticResource FontColor}"
-                                               HorizontalOptions="Start"
-                                               VerticalOptions="Center"
-                                               FontSize="18"/>
-
-                                        <StackLayout Grid.Column="1"
+                                        <StackLayout Grid.Column="0"
                                                      Margin="0,0,10,0">
                                             <Image Source="tick.png"
                                                    WidthRequest="25"/>
                                         </StackLayout>
 
+                                        <Label Text="{Binding Name}"
+                                               Grid.Column="1"
+                                               TextColor="{StaticResource FontColor}"
+                                               HorizontalOptions="Start"
+                                               VerticalOptions="Center"
+                                               FontAttributes="Bold"
+                                               FontSize="18"/>
+                                        
                                         <VisualStateManager.VisualStateGroups>
                                             <VisualStateGroup Name="CommonStates">
                                                 <VisualState Name="Normal" />
                                                 <VisualState Name="Selected">
                                                     <VisualState.Setters>
-                                                        <Setter Property="Background" Value="{StaticResource Item}"/>
+                                                        <Setter Property="Background" Value="{StaticResource SelectedStudentGradient}"/>
                                                     </VisualState.Setters>
                                                 </VisualState>
                                             </VisualStateGroup>

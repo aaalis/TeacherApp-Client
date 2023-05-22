@@ -14,39 +14,6 @@ namespace TeacherApp.ViewModels
     {
 		public Lesson LocalLesson { get; set; }
 
-		private string lessonDiscripline;
-		public string LessonDiscripline
-        {
-			get { return lessonDiscripline; }
-			set 
-			{ 
-				lessonDiscripline = value;
-				SetProperty(ref lessonDiscripline, value); 
-			}
-		}
-
-		private string lessonGroupName;
-		public string LessonGroupName
-		{
-			get { return lessonGroupName; }
-			set 
-			{ 
-				lessonGroupName = value;
-				SetProperty(ref lessonGroupName, value); 
-			}
-		}
-
-		private string lessonDatetime;
-		public string LessonDatetime
-		{
-			get { return lessonDatetime; }
-			set 
-			{ 
-				lessonDatetime = value;
-				SetProperty(ref lessonDatetime, value); 
-			}
-		}
-
 		private List<Student> lessonStudents;
 		public List<Student> LessonStudents
 		{
@@ -55,17 +22,6 @@ namespace TeacherApp.ViewModels
 			{
 				lessonStudents = value;
 				SetProperty(ref lessonStudents, value);
-			}
-		}
-
-		private string lessonClassroom;
-		public string LessonClassroom
-		{
-			get { return lessonClassroom; }
-			set 
-			{
-                lessonClassroom = value;
-				SetProperty(ref lessonClassroom, value);
 			}
 		}
 
@@ -84,6 +40,8 @@ namespace TeacherApp.ViewModels
 
 		public Command GradesCommand { get; }
 
+		public Command<Student> LongPressCommand { get; }
+
 		public LessonViewModel()
 		{
             LocalLesson = MockDataStore.Lessons[0];
@@ -96,15 +54,13 @@ namespace TeacherApp.ViewModels
 			currentLesson.Classroom = LocalLesson.Classroom;
 			currentLesson.Id = LocalLesson.Id;
 
-			LessonDiscripline = LocalLesson.Discipline;
-			LessonGroupName = LocalLesson.Group.Name;
-			LessonDatetime = LocalLesson.Datetime.ToString();
 			LessonStudents = LocalLesson.Group.Students.ToList();
-			LessonClassroom = LocalLesson.Classroom;
+			
 			SelectedStudents = new ObservableCollection<object>();
 
             GradesCommand = new Command(OnGradesClick);
 			ItemSelectCommand = new Command(OnItemSelect);
+			LongPressCommand = new Command<Student>(OnLongPress);
 		}
 
 		private async void OnGradesClick(object obj)
@@ -115,6 +71,15 @@ namespace TeacherApp.ViewModels
 		private void OnItemSelect(object obj)
 		{
 			var test2 = obj;
+		}
+
+		private async void OnLongPress(Student student)
+		{
+			var chosenStudent = LongPressStudent.Instance();
+			chosenStudent.Id = student.Id;
+			chosenStudent.Name = student.Name;
+
+			await Shell.Current.GoToAsync(nameof(GradesPage));
 		}
 	}
 }

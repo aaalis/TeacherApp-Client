@@ -39,7 +39,7 @@
                   Margin="0,1,0,1">
                 <Grid>
                     <StackLayout>
-                        <CollectionView BackgroundColor="{StaticResource Background}"
+                        <CollectionView BackgroundColor="{StaticResource BackgroundListView}"
                                         Margin="0,0,0,0"
                                         SelectionMode="Single"
                                         ItemsSource="{Binding Students}"
@@ -48,29 +48,31 @@
                                 <DataTemplate>
                                     <Grid Padding="10">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition/>
                                             <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition />
                                         </Grid.ColumnDefinitions>
 
+                                        <StackLayout Grid.Column="0"
+                                                     Margin="0,0,10,0">
+                                            <Image Source="grades.png"
+                                                   WidthRequest="25"/>
+                                        </StackLayout>
+                                        
                                         <Label Text="{Binding Name}"
-                                               Grid.Column="0"
+                                               Grid.Column="1"
                                                TextColor="{StaticResource FontColor}"
                                                HorizontalOptions="Start"
                                                VerticalOptions="Center"
                                                FontSize="18"/>
 
-                                        <StackLayout Grid.Column="1"
-                                                     Margin="0,0,10,0">
-                                            <Image Source="grades.png"
-                                                   WidthRequest="25"/>
-                                        </StackLayout>
+                                        
 
                                         <VisualStateManager.VisualStateGroups>
                                             <VisualStateGroup Name="CommonStates">
                                                 <VisualState Name="Normal" />
                                                 <VisualState Name="Selected">
                                                     <VisualState.Setters>
-                                                        <Setter Property="Background" Value="{StaticResource Item}"/>
+                                                        <Setter Property="Background" Value="{StaticResource SelectedItemGradient}"/>
                                                     </VisualState.Setters>
                                                 </VisualState>
                                             </VisualStateGroup>
