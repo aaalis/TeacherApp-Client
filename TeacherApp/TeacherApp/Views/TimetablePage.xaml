@@ -39,6 +39,8 @@
                                     Margin="0,0,0,0"
                                     SelectionMode="Single"
                                     ItemsSource="{Binding Lessons}"
+                                    SelectedItem="{Binding SelectedLesson}"
+                                    SelectionChangedCommand="{Binding SelectLessonCommand}"
                                     HorizontalScrollBarVisibility="Never">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
@@ -54,7 +56,7 @@
                                     <Label Grid.Column="0"
                                                    Grid.ColumnSpan="3"
                                            FontSize="18"
-                                                   Text="{Binding Discipline}"
+                                                   Text="{Binding LessonDiscipline.Name}"
                                                    TextColor="{StaticResource FontColor}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="Center"/>

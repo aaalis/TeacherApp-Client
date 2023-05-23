@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using TeacherApp.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +15,12 @@ namespace TeacherApp.Views
         public LessonPage()
         {
             InitializeComponent();
+        }
+
+        private void ContentPage_Appearing(object sender, EventArgs e)
+        {
+            
+            BindingContext = new LessonViewModel();
         }
     }
 }

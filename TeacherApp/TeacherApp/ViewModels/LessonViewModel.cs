@@ -20,7 +20,6 @@ namespace TeacherApp.ViewModels
 			get { return lessonStudents; }
 			set 
 			{
-				lessonStudents = value;
 				SetProperty(ref lessonStudents, value);
 			}
 		}
@@ -31,7 +30,6 @@ namespace TeacherApp.ViewModels
 			get { return selectedStudents; }
 			set 
 			{ 
-				selectedStudents = value;
 				SetProperty(ref selectedStudents, value);
 			}
 		}
@@ -44,23 +42,23 @@ namespace TeacherApp.ViewModels
 
 		public LessonViewModel()
 		{
-            LocalLesson = MockDataStore.Lessons[0];
+			LocalLesson = CurrentLesson.Instance();
 
-            //temp
-            var currentLesson = CurrentLesson.Instance();
-			currentLesson.Group = LocalLesson.Group;
-			currentLesson.Discipline = LocalLesson.Discipline;
-			currentLesson.Datetime = LocalLesson.Datetime;
-			currentLesson.Classroom = LocalLesson.Classroom;
-			currentLesson.Id = LocalLesson.Id;
-
-			LessonStudents = LocalLesson.Group.Students.ToList();
+			if (LocalLesson.Group != null)
+			{
+                LessonStudents = LocalLesson.Group.Students.ToList();
+            }
 			
 			SelectedStudents = new ObservableCollection<object>();
 
             GradesCommand = new Command(OnGradesClick);
 			ItemSelectCommand = new Command(OnItemSelect);
 			LongPressCommand = new Command<Student>(OnLongPress);
+		}
+
+		~LessonViewModel()
+		{
+
 		}
 
 		private async void OnGradesClick(object obj)
@@ -75,10 +73,8 @@ namespace TeacherApp.ViewModels
 
 		private async void OnLongPress(Student student)
 		{
-			var chosenStudent = LongPressStudent.Instance();
-			chosenStudent.Id = student.Id;
-			chosenStudent.Name = student.Name;
-
+			ChosenStudent.Instance().Update(student);
+			
 			await Shell.Current.GoToAsync(nameof(GradesPage));
 		}
 	}

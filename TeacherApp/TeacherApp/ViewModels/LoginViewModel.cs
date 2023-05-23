@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
+using TeacherApp.Models;
 using TeacherApp.Services;
 using TeacherApp.Views;
 using Xamarin.Forms;
@@ -16,7 +17,6 @@ namespace TeacherApp.ViewModels
             get { return login; }
             set
             {
-                login = value;
                 SetProperty(ref login, value);
             }
         }
@@ -27,7 +27,6 @@ namespace TeacherApp.ViewModels
             get { return password; }
             set
             {
-                password = value;
                 SetProperty(ref password, value);
             }
         }
@@ -45,7 +44,7 @@ namespace TeacherApp.ViewModels
         }
 
 
-        public FileService FileService { get; set; }
+        public FileService FileService { get; }
 
         public Command LoginCommand { get; }
 
@@ -68,6 +67,8 @@ namespace TeacherApp.ViewModels
             if (Validating () && successAuth)
             {
                 FileService.SaveCredentials(Login, Password);
+
+                LoadLessons();
 
                 await Shell.Current.GoToAsync($"//{nameof(LessonPage)}");
             }
@@ -105,5 +106,10 @@ namespace TeacherApp.ViewModels
             Password = user.Password;
         }
 
+
+        private void LoadLessons()
+        {
+            CurrentLesson.Instance().Update(MockDataStore.Lessons[0]);
+        }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TeacherApp.Models;
+using TeacherApp.Services;
 
 namespace TeacherApp.ViewModels
 {
@@ -13,7 +15,6 @@ namespace TeacherApp.ViewModels
             get { return student; }
             set 
             { 
-                student = value;
                 SetProperty(ref student, value);
             }
         }
@@ -24,23 +25,29 @@ namespace TeacherApp.ViewModels
             get { return lesson; }
             set 
             { 
-                lesson = value;
                 SetProperty(ref lesson, value);
             }
         }
 
-        private int myVar;
-        public int MyProperty
+        private List<TaskAcademicPlan> tasks;
+        public List<TaskAcademicPlan> Tasks
         {
-            get { return myVar; }
-            set { myVar = value; }
+            get { return tasks; }
+            set 
+            { 
+                SetProperty(ref tasks, value);
+            }
         }
 
 
         public GradesViewModel()
         {
             Lesson = CurrentLesson.Instance();
-            Student = LongPressStudent.Instance();
+            Student = ChosenStudent.Instance();
+            Tasks = MockDataStore.AcademicPlans.ToList()
+                                               .Find(x => x.StudentId == Student.Id && x.AcademicPlanDiscipline.Id == Lesson.LessonDiscipline.Id)
+                                               .Tasks
+                                               .ToList();
         }
     }
 }

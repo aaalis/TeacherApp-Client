@@ -6,8 +6,6 @@ using TeacherApp.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-[assembly: ExportFont("RobotoSlab-Light.ttf", Alias = "RobotoSlab")]
-
 namespace TeacherApp
 {
     public partial class App : Application

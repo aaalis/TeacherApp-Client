@@ -16,20 +16,19 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Grid BackgroundColor="White">
-            <Grid Margin="15">
-                <StackLayout HorizontalOptions="Center">
-                    <Label Text="Для выставления оценки выберете студента"
-                       FontAttributes="Bold"
-                       FontSize="22"
-                       TextColor="{StaticResource FontColor}"/>
-                </StackLayout>
-            </Grid>
-        </Grid>
+        
+        <StackLayout HorizontalOptions="Center"
+                     Margin="15">
+            <Label Text="Для выставления оценок выберете студента"
+                   HorizontalTextAlignment="Center"
+                   FontAttributes="Bold"
+                   FontSize="22"
+                   TextColor="{StaticResource FontColor}"/>
+        </StackLayout>
+            
 
         <Label Text="Список группы"
                Grid.Row="1"
-               FontSize="18"
                TextColor="{StaticResource FontColor}"
                Margin="5,0,0,0"/>
 
@@ -43,6 +42,8 @@
                                         Margin="0,0,0,0"
                                         SelectionMode="Single"
                                         ItemsSource="{Binding Students}"
+                                        SelectedItem="{Binding SelectedStudent}"
+                                        SelectionChangedCommand="{Binding SelectStudentCommand}"
                                         HorizontalScrollBarVisibility="Never">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>

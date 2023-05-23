@@ -17,14 +17,17 @@ namespace TeacherApp.Models
 		public DateTime Datetime
 		{
 			get { return datetime; }
-			set { datetime = value; }
+			set 
+			{ 
+				datetime = new DateTime(value.Year, value.Month, value.Day, value.Hour, value.Minute, 0, value.Kind);
+			}
 		}
 
-		private string discipline;
-		public string Discipline
+		private Discipline lessonDiscipline;
+		public Discipline LessonDiscipline
         {
-			get { return discipline; }
-			set { discipline = value; }
+			get { return lessonDiscipline; }
+			set { lessonDiscipline = value; }
 		}
 
 		private Group group;
@@ -46,13 +49,22 @@ namespace TeacherApp.Models
 
 		}
 
-		public Lesson(int Id, DateTime Datetime, string Discipline, Group Group, string Classroom)
+		public Lesson(int Id, DateTime Datetime, Discipline LessonDiscipline, Group Group, string Classroom)
 		{
 			this.Id = Id;
 			this.Datetime = Datetime;
-			this.Discipline = Discipline;
+			this.LessonDiscipline = LessonDiscipline;
 			this.Group = Group;
 			this.Classroom = Classroom;
+		}
+
+		public void Update(Lesson Lesson)
+		{
+			this.Id = Lesson.Id;
+			this.Datetime = Lesson.Datetime;
+			this.LessonDiscipline = Lesson.LessonDiscipline;
+			this.Group = Lesson.Group;
+			this.Classroom = Lesson.Classroom;
 		}
 	}
 }

@@ -5,7 +5,8 @@
              xmlns:vm="clr-namespace:TeacherApp.ViewModels"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              Title="Текущее занятие"
-             BackgroundColor="{DynamicResource Background}">
+             BackgroundColor="{DynamicResource Background}"
+             Appearing="ContentPage_Appearing">
     <ContentPage.BindingContext>
         <vm:LessonViewModel/>
     </ContentPage.BindingContext>
@@ -33,7 +34,7 @@
                     <Entry BackgroundColor="{DynamicResource Background}"
                            TextColor="{DynamicResource FontColor}"
                            IsReadOnly="True"
-                           Text="{Binding LocalLesson.Discipline}"/>
+                           Text="{Binding LocalLesson.LessonDiscipline.Name}"/>
                 </StackLayout>
                 
                 <StackLayout>
@@ -109,7 +110,6 @@
                                                TextColor="{StaticResource FontColor}"
                                                HorizontalOptions="Start"
                                                VerticalOptions="Center"
-                                               FontAttributes="Bold"
                                                FontSize="18"/>
                                         
                                         <VisualStateManager.VisualStateGroups>

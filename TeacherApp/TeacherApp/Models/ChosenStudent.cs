@@ -4,20 +4,20 @@ using System.Text;
 
 namespace TeacherApp.Models
 {
-    public class LongPressStudent : Student
+    public class ChosenStudent : Student
     {
-        private static LongPressStudent instance;
+        private static ChosenStudent instance;
 
-        private LongPressStudent()
+        private ChosenStudent()
         {
 
         }
 
-        public static LongPressStudent Instance()
+        public static ChosenStudent Instance()
         {
             if (instance == null)
             {
-                instance = new LongPressStudent();
+                instance = new ChosenStudent();
             }
             return instance;
         }

@@ -4,7 +4,9 @@
              xmlns:vm="clr-namespace:TeacherApp.ViewModels"
              x:Class="TeacherApp.Views.GradesPage"
              BackgroundColor="{StaticResource Background}"
-             Title="Успеваемость">
+             Title="Успеваемость"
+             Shell.PresentationMode="Modal"
+             Appearing="ContentPage_Appearing">
     <ContentPage.BindingContext>
         <vm:GradesViewModel/>
     </ContentPage.BindingContext>
@@ -35,25 +37,29 @@
                     <Entry BackgroundColor="{DynamicResource Background}"
                            TextColor="{DynamicResource FontColor}"
                            IsReadOnly="True"
-                           Text="{Binding Lesson.Discipline}"/>
+                           Text="{Binding Lesson.LessonDiscipline.Name}"/>
                 </StackLayout>
             </StackLayout>
         </Grid>
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1"
+              Margin="20,0,20,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            
-            <Label Text="Задание"
-               Grid.Column="0"
-               TextColor="{StaticResource FontColor}"
-               Margin="15,0,0,0"/>
-            <Label Text="Балл/Макс.балл"
-               Grid.Column="1"
-               TextColor="{StaticResource FontColor}"
-               Margin="15,0,0,0"/>
+
+            <StackLayout Grid.Column="0"
+                         HorizontalOptions="Start">
+                <Label Text="Задание"
+                       TextColor="{StaticResource FontColor}"/>
+            </StackLayout>
+
+            <StackLayout Grid.Column="1"
+                         HorizontalOptions="End">
+                <Label Text="Балл/Макс.балл"
+                       TextColor="{StaticResource FontColor}"/>
+            </StackLayout>
         </Grid>
 
         <Grid Grid.Row="2" 
@@ -62,12 +68,12 @@
                   Margin="0,1,0,1">
                 <Grid>
                     <StackLayout>
-                        <CollectionView BackgroundColor="{StaticResource Background}"
+                        <CollectionView BackgroundColor="{StaticResource BackgroundListView}"
                                         Margin="0,0,0,0"
-                                        SelectionMode="Multiple"
-                                        ItemsSource="{Binding }"
-                                        HorizontalScrollBarVisibility="Never"
-                                        >
+                                        SelectionMode="Single"
+                                        x:Name="collectionView"
+                                        ItemsSource="{Binding Tasks}"
+                                        HorizontalScrollBarVisibility="Never">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid Padding="10">
@@ -76,19 +82,39 @@
                                             <ColumnDefinition Width="auto"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <Label Text="{Binding }"
-                                               Grid.Column="0"
+                                        
+                                        
+                                        <Label Text="{Binding TaskName}"
                                                TextColor="{StaticResource FontColor}"
                                                HorizontalOptions="Start"
                                                VerticalOptions="Center"
-                                               FontSize="18"/>
+                                               FontSize="18"
+                                               LineBreakMode="WordWrap"/>
+
 
                                         <StackLayout Grid.Column="1"
-                                                     Margin="0,0,10,0">
-                                            <Image Source="tick.png"
-                                                   WidthRequest="25"/>
-                                        </StackLayout>
+                                                     Orientation="Horizontal"
+                                                     HorizontalOptions="End"
+                                                     Margin="0,0,20,0">
+                                            <Entry Keyboard="Numeric"
+                                                   Text="{Binding ResultPoints}"
+                                                   x:Name="entry"
+                                                   FontSize="18">
+                                            </Entry>
 
+
+                                            <Label Text="/"
+                                               HorizontalOptions="Start"
+                                               VerticalOptions="Center"
+                                               TextColor="{StaticResource FontColor}"
+                                                   FontSize="18"/>
+                                            <Label HorizontalOptions="Start"
+                                               VerticalOptions="Center"
+                                               TextColor="{StaticResource FontColor}"
+                                               Text="{Binding MaxPoints}"
+                                                   FontSize="18"/>
+                                        </StackLayout>
+                                        
                                         <VisualStateManager.VisualStateGroups>
                                             <VisualStateGroup Name="CommonStates">
                                                 <VisualState Name="Normal" />

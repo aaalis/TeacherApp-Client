@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TeacherApp.Models
 {
-    public class Student
+    public class Discipline
     {
 		private int id;
 		public int Id
@@ -15,27 +15,20 @@ namespace TeacherApp.Models
 
 		private string name;
 		public string Name
-		{
+        {
 			get { return name; }
 			set { name = value; }
 		}
 
-
-		public Student()
+		public Discipline()
 		{
 
 		}
 
-		public Student(int Id, string Name)
+		public Discipline(int Id, string Name)
 		{
 			this.Id = Id;
 			this.Name = Name;
-		}
-
-        public void Update(Student student)
-		{
-			this.Id = student.Id;
-			this.Name = student.Name;
 		}
 	}
 }

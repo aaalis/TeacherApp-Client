@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TeacherApp.Models;
+using TeacherApp.Views;
+using Xamarin.Forms;
 
 namespace TeacherApp.ViewModels
 {
@@ -14,7 +16,6 @@ namespace TeacherApp.ViewModels
 			get { return groupName; }
 			set 
 			{ 
-				groupName = value;
 				SetProperty(ref groupName, value);
 			}
 		}
@@ -25,17 +26,36 @@ namespace TeacherApp.ViewModels
 			get { return students; }
 			set 
 			{ 
-				students = value;
 				SetProperty(ref students, value);
 			}
 		}
+
+		private Student selectedStudent;
+		public Student SelectedStudent
+		{
+			get { return selectedStudent; }
+			set 
+			{
+				SetProperty(ref selectedStudent, value);
+			}
+		}
+
+		public Command SelectStudentCommand{ get; set; }
 
 		public StudentsViewModel()
 		{
 			var Group = CurrentLesson.Instance().Group;
 			GroupName = Group.Name;
 			Students = Group.Students.ToList();
+
+			SelectStudentCommand = new Command(OnSelected);
 		}
 
+		private async void OnSelected()
+		{
+			ChosenStudent.Instance().Update(SelectedStudent);
+
+			await Shell.Current.GoToAsync(nameof(GradesPage));
+		}
 	}
 }
