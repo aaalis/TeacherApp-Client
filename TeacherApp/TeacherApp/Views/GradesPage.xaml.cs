@@ -21,6 +21,6 @@ namespace TeacherApp.Views
         {
             BindingContext = new GradesViewModel();
         }
-
+        
     }
 }

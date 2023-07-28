@@ -74,7 +74,7 @@ namespace TeacherApp.ViewModels
 		private async void OnLongPress(Student student)
 		{
 			ChosenStudent.Instance().Update(student);
-			
+
 			await Shell.Current.GoToAsync(nameof(GradesPage));
 		}
 	}
